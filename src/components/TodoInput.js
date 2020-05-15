@@ -19,8 +19,8 @@ export default class Todolist extends Component{
                 </div>
                 <input type="text" className="form-control text-capitalize" 
                 placeholder="add a todo item"
-                value={item}
                 onChange={handleChange}
+                value={item}
                 >
                     </input>      
                 </div>  

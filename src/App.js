@@ -5,29 +5,31 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { v1 as uuid } from "uuid"
 class App extends Component {
 
-  state=
+  state =
   {
     items:[],
     id: uuid(),
     item:'',
     editItem:false
   }
-  handleChange = (e)=>{
+  handleChange = e =>{
 
     this.setState({
       item:e.target.value
     })
     
+    
   }
-  handleSubmit = (e)=>{
+  handleSubmit = e =>{
 
-
+    
     e.preventDefault();
     const newItem ={
       id:this.state.id,
-      item:this.state.item
+      title:this.state.item
 
-    }
+    };
+    console.log(newItem)
 
     const  updatedItem =[...this.state.items,newItem];
 
@@ -39,6 +41,12 @@ class App extends Component {
     });
     
 
+  }
+
+  clearList = () =>{
+    this.setState({
+      items:[]
+    });
   }
 
  render(){
@@ -54,7 +62,7 @@ class App extends Component {
           <TodoInput item={this.state.item} 
           handleChange={this.handleChange}
            handleSubmit={this.handleSubmit}/>
-          <TodoList items={this.state.items}/>
+          <TodoList items={this.state.items} clearList={this.clearList}/>
         </div>
       </div>
     </div>
